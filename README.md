@@ -1,16 +1,27 @@
-# flutter_ai
+# Flutter AI Workshop with Gemini and Gemma  
 
-A new Flutter project.
+This workshop will guide you through integrating AI functionalities with Flutter applications using the powerful capabilities of Gemini and Gemma models. 
 
-## Getting Started
+## What you'll learn
 
-This project is a starting point for a Flutter application.
+* Fundamentals of AI integration in Flutter apps
+* Multimodality prompts 
+* Implementing AI features using these models in your Flutter projects
 
-A few resources to get you started if this is your first Flutter project:
+## Workshop Slides
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+[Workshop Slides](https://docs.google.com/presentation/d/e/2PACX-1vQ5LGJaEjVhAaGNw1xX6WX9IZSvXiq8qrwC9-Fb9ok3Lyu-12NaBWLt_C2z6hZkpANJ3_vhWia0zB-1/pub?start=false&loop=false&delayms=3000)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Prerequisites
+
+* Basic understanding of Flutter development
+* Familiarity with Dart programming
+
+## Setting Up
+
+1. Clone this repository:
+
+   ```bash
+   $ git clone https://github.com/alfredobs97/flutter-ai-workshop.git
+   ```
+
