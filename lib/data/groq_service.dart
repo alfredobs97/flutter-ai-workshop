@@ -10,6 +10,17 @@ class GroqService {
     gemma.startChat();
   }
 
-  Future<String?> generateContent(String prompt) async {}
+  Future<String?> generateContent(String prompt) async {
+    try {
+      final GroqResponse response = await gemma.sendMessage(prompt);
+
+      return response.choices.first.message.content;
+    } on GroqException catch (error) {
+      debugPrint('GroqException: ${error.message}');
+      return null;
+    } catch (e) {
+      debugPrint('Exception: ${e.toString()}');
+      return null;
+    }
+  }
 }
- 
