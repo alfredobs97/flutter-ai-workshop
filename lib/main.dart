@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ai_workshop/ui/pages/describe_image_page.dart';
 import 'package:flutter_ai_workshop/ui/pages/ask_ai_page.dart';
-import 'package:flutter_ai_workshop/ui/pages/stream_ai_page.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 void main() async {

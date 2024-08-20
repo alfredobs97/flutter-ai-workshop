@@ -1,7 +1,5 @@
-import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ai_workshop/data/gemini_service.dart';
-import 'package:flutter_ai_workshop/ui/widgets/model_response_widget.dart';
 
 class StreamAiPage extends StatefulWidget {
   const StreamAiPage({super.key});
@@ -14,7 +12,7 @@ class _StreamAiPageState extends State<StreamAiPage> {
   final service = GeminiService();
   final textController = TextEditingController();
 
-  Stream<String?> _modelStream = Stream.empty();
+  Stream<String?> _modelStream = const Stream.empty();
 
   @override
   Widget build(BuildContext context) {
