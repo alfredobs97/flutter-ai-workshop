@@ -12,7 +12,7 @@ class DescribeImagePage extends StatefulWidget {
 
 class _DescribeImagePageState extends State<DescribeImagePage> {
   final List<String> _imagePaths = [
-    'assets/img/image-1.png',
+    'assets/img/image-1.jpg',
     'assets/img/image-2.jpeg',
     'assets/img/image-3.jpeg',
     'assets/img/image-4.jpeg',
@@ -20,7 +20,7 @@ class _DescribeImagePageState extends State<DescribeImagePage> {
   final service = GeminiService();
   final pageController = PageController();
 
-  Future<String> _modelDescription = Future.value('');
+  Future<String?> _modelDescription = Future.value('');
 
   @override
   Widget build(BuildContext context) {
@@ -52,8 +52,6 @@ class _DescribeImagePageState extends State<DescribeImagePage> {
                 onPressed: () async {
                   final imageSelected = _imagePaths[pageController.page?.toInt() ?? 0];
                   final bytes = await rootBundle.load(imageSelected);
-                  _modelDescription = service.describeImage(bytes.buffer.asUint8List());
-                  setState(() {});
                 },
                 child: const Text("Send to Gemini"),
               ),
@@ -68,15 +66,7 @@ class _DescribeImagePageState extends State<DescribeImagePage> {
             ),
             child: FutureBuilder(
               future: _modelDescription,
-              builder: (context, snapshot) {
-                return AnimatedSwitcher(
-                  duration: const Duration(milliseconds: 300),
-                  child: switch (snapshot.connectionState) {
-                    ConnectionState.waiting => const CircularProgressIndicator.adaptive(),
-                    _ => _buildSingleResponseWidget(snapshot),
-                  },
-                );
-              },
+              builder: (context, snapshot) => const SizedBox.shrink(),
             ),
           ),
         ],

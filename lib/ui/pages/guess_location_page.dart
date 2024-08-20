@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ai_workshop/data/gemini_service.dart';
@@ -65,7 +67,6 @@ class _GuessLocationPageState extends State<GuessLocationPage> {
     }
 
     imageInBytes = await image.readAsBytes();
-    modelDescription = geminiService.guessLocationOfImage(imageInBytes!);
 
     setState(() {});
   }
