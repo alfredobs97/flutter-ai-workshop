@@ -55,7 +55,7 @@ class _GuessLocationPageState extends State<GuessLocationPage> {
   }
 
   Future<void> _pickImage() async {
-    final XFile? image = await picker.pickImage(source: ImageSource.camera);
+    final XFile? image = await picker.pickImage(source: ImageSource.gallery);
 
     if (image == null) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -66,7 +66,9 @@ class _GuessLocationPageState extends State<GuessLocationPage> {
       return;
     }
 
-    imageInBytes = await image.readAsBytes();
+    final imageInBytes = await image.readAsBytes();
+
+    modelDescription = geminiService.guessLocationOfImage(imageInBytes);
 
     setState(() {});
   }

@@ -20,7 +20,7 @@ class _DescribeImagePageState extends State<DescribeImagePage> {
   final service = GeminiService();
   final pageController = PageController();
 
-  Future<String?> _modelDescription = Future.value('');
+  Future<String?> _modelDescription = Future.value(null);
 
   @override
   Widget build(BuildContext context) {
@@ -52,6 +52,10 @@ class _DescribeImagePageState extends State<DescribeImagePage> {
                 onPressed: () async {
                   final imageSelected = _imagePaths[pageController.page?.toInt() ?? 0];
                   final bytes = await rootBundle.load(imageSelected);
+
+                  _modelDescription = service.describeImage(bytes.buffer.asUint8List());
+
+                  setState(() {});
                 },
                 child: const Text("Send to Gemini"),
               ),
@@ -66,7 +70,10 @@ class _DescribeImagePageState extends State<DescribeImagePage> {
             ),
             child: FutureBuilder(
               future: _modelDescription,
-              builder: (context, snapshot) => const SizedBox.shrink(),
+              builder: (context, snapshot) => switch (snapshot.connectionState) {
+                ConnectionState.waiting => const CircularProgressIndicator(),
+                _ => _buildSingleResponseWidget(snapshot)
+              },
             ),
           ),
         ],

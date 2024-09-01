@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ai_workshop/ui/pages/ask_ai_page.dart';
+import 'package:flutter_ai_workshop/ui/pages/describe_image_page.dart';
+import 'package:flutter_ai_workshop/ui/pages/guess_location_page.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 void main() async {
@@ -18,7 +20,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const AskAiPage(),
+      home: const GuessLocationPage(),
     );
   }
 }

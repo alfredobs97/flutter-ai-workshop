@@ -48,13 +48,19 @@ class _AskAiPageState extends State<AskAiPage> {
               ),
               const SizedBox(height: 24),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  _modelSingleResponse = geminiService.generateContent(textController.text);
+                  setState(() {});
+                },
                 child: const Text("Ask"),
               ),
               const SizedBox(height: 24),
               FutureBuilder(
                 future: _modelSingleResponse,
-                builder: (context, snapshot) => const SizedBox.shrink(),
+                builder: (context, snapshot) => switch (snapshot.connectionState) {
+                  ConnectionState.waiting => const CircularProgressIndicator(),
+                  _ => _buildSingleResponseWidget(snapshot),
+                },
               )
             ],
           ),

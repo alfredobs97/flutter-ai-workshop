@@ -16,61 +16,59 @@ class GeminiService extends AiService {
         );
 
   @override
-  Future<void> init() {
-    // TODO: implement init
-    throw UnimplementedError();
+  Future<void> init() async {}
+
+  @override
+  Future<String?> generateContent(String prompt) async {
+    final content = Content.text(prompt);
+
+    return (await _model.generateContent([content])).text;
   }
 
   @override
-  Future<String?> generateContent(String prompt) {
-    // TODO: implement generateContent
-    throw UnimplementedError();
+  Future<String?> describeImage(Uint8List imageInBytes) async {
+    final mimeType = lookupMimeType('image', headerBytes: imageInBytes) ?? 'image/*';
+
+    final imageContent = DataPart(mimeType, imageInBytes);
+    final describeImagePrompt = TextPart('Describe this image:');
+
+    final prompt = Content.multi([describeImagePrompt, imageContent]);
+
+    final response = await _model.generateContent([prompt]);
+
+    return response.text ?? 'No description found for this image, try again!';
   }
 
   @override
-  Future<String?> describeImage(Uint8List imageInBytes) {
-    // TODO: implement describeImage
-    throw UnimplementedError();
-  }
+  Future<String?> guessLocationOfImage(Uint8List imageInBytes) async {
+    final mimeType = lookupMimeType('image', headerBytes: imageInBytes) ?? 'image/*';
 
-  @override
-  Future<String?> guessLocationOfImage(Uint8List imageInBytes) {
-    // TODO: implement guessLocationOfImage
-    throw UnimplementedError();
+    final imageContent = DataPart(mimeType, imageInBytes);
+
+    final guessLocationPrompt = TextPart(
+      '''Given a visual representation, please use analytical skills as a keen researcher would. 
+        Observe distinctive natural elements such as flora and fauna present in the scene along with any visible landforms 
+        or weather patterns to make your best educated guess about where this specific location could be situated on Earth.''',
+    );
+
+    final prompt = Content.multi([guessLocationPrompt, imageContent]);
+
+    final response = await _model.generateContent([prompt]);
+
+    return response.text ?? 'No description found for this image, try again!';
   }
 
   @override
   Stream<String?> generateTextStream(String prompt) {
-    // TODO: implement generateTextStream
-    throw UnimplementedError();
+    final content = Content.text(prompt);
+
+    return _model
+        .generateContentStream([content])
+        .where(
+          (event) => event.text != null,
+        )
+        .transform(
+          ScanStreamTransformer((acc, curr, _) => acc! + curr.text!, ''),
+        );
   }
 }
-
-
-
-///  Future<String> describeImage(Uint8List imageInBytes) async {
-///    final mimeType = lookupMimeType('image', headerBytes: imageInBytes) ?? 'image/*';
-///
-///    final imageContent = DataPart(mimeType, imageInBytes);
-///    final describeImagePrompt = TextPart('Describe this image:');
-///
-///    final prompt = Content.multi([describeImagePrompt, imageContent]);
-///
-///    final response = await visionModel.generateContent([prompt]);
-///
-///    return response.text ?? 'No description found for this image, try again!';
-///  }
-///
-///    Future<String> describeImage(Uint8List imageInBytes) async {
-///    final mimeType = lookupMimeType('image', headerBytes: imageInBytes) ?? 'image/*';
-///
-///    final imageContent = DataPart(mimeType, imageInBytes);
-///    final describeImagePrompt = TextPart('Describe this image:');
-///
-///    final prompt = Content.multi([describeImagePrompt, imageContent]);
-///
-///    final response = await visionModel.generateContent([prompt]);
-///
-///    return response.text ?? 'No description found for this image, try again!';
-///  } 
-///
