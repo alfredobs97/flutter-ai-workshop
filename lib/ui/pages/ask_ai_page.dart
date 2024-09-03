@@ -18,13 +18,6 @@ class _AskAiPageState extends State<AskAiPage> {
   Future<String?> _modelSingleResponse = Future.value(null);
 
   @override
-  void initState() {
-    super.initState();
-    geminiService.init();
-    groqSevice.init();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
