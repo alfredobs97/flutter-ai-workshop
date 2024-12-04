@@ -10,6 +10,8 @@ This workshop will guide you through integrating AI functionalities with Flutter
 
 ## Workshop Slides
 
+[Workshop Slides - 42 Malaga](https://docs.google.com/presentation/d/e/2PACX-1vQ5LGJaEjVhAaGNw1xX6WX9IZSvXiq8qrwC9-Fb9ok3Lyu-12NaBWLt_C2z6hZkpANJ3_vhWia0zB-1/pub?start=false&loop=false&delayms=3000)
+
 [Workshop Flutter & Friends](https://docs.google.com/presentation/d/1Zv_ZJLIudZTnp_yIELYefvmp2-fiGaSpAiMKAiJpKWY/edit?usp=sharing)
 
 [Workshop Slides - V2](https://docs.google.com/presentation/d/1Zv_ZJLIudZTnp_yIELYefvmp2-fiGaSpAiMKAiJpKWY/edit?usp=sharing)
