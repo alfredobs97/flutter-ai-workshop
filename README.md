@@ -25,6 +25,32 @@ This workshop will guide you through integrating AI functionalities with Flutter
 - Create a Google AI Studio account
 - Create a Groq Cloud account
 
+## Running the Project with FVM
+
+1. Install FVM (Flutter Version Management):
+
+   ```bash
+   $ dart pub global activate fvm
+   ```
+
+2. Install the Flutter version specified in the project:
+
+   ```bash
+   $ fvm install
+   ```
+
+3. Use the installed Flutter version:
+
+   ```bash
+   $ fvm use
+   ```
+
+4. Run the project using FVM:
+
+   ```bash
+   $ fvm flutter run
+   ```
+
 ## Setting Up
 
 1. Clone this repository:
